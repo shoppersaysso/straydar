@@ -2,19 +2,22 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
+import CatsList from './components/CatsList';
 import CatsPage from './containers/CatsPage';
 import CatsNew from './containers/CatsNew';
 import Locations from './components/Locations';
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from './actions/getCats.js';
 import logo from './logo.png';
 import './App.css';
 
-class App extends Component {
+export class App extends Component {
   componentDidMount() {
-    window.fetch('api/cats')
-      .then(response => response.json())
-      .then(json => console.log(json))
-      .catch(error => console.log(error))
+      console.log('component did mount')
+      this.props.actions.getCats()
   }
+
   render() {
     return (
       <Router>
@@ -33,10 +36,19 @@ class App extends Component {
           <p className="App-intro">
             Help locate stray cats
           </p>
+          <CatsList catList={this.props.catList} />
         </div>
       </Router>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {catList: state.cats }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {actions: bindActionCreators(actions, dispatch)}
+}
+
+export const WrapperApp = connect(mapStateToProps, mapDispatchToProps)(App)
