@@ -3,9 +3,9 @@ import fetch from 'isomorphic-fetch'
 export function getCats() {
   return (dispatch) => {
     dispatch({ type: 'GET_CATS' });
-    return fetch('http://localhost:3001/api/cats')
+    return fetch('/api/v1/cats')
       .then(response => response.json())
-      .then(cats => dispatch({ type: 'ADD_CAT', cats }));
+      .then(cats => dispatch({ type: 'GET_CATS', cats }));
   };
 }
 

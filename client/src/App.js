@@ -44,7 +44,7 @@ export class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return {catList: state.cats }
+  return {cats: state.cats }
 }
 
 function mapDispatchToProps(dispatch) {
