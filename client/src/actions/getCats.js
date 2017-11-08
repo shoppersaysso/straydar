@@ -1,14 +1,8 @@
+import fetch from 'isomorphic-fetch'
+
 export function getCats() {
-  const cats = [
-    {color: "black", age: "adult", details: "Has white on front two paws"},
-    {color: "orange", age: "kitten", details: "Has white collar"},
-    {color: "white", age: "adult", details: "Blue eyes"},
-  ];
-  return {
-    type: 'GET_CATS',
-    cats
-  };
-};
+  fetch('/api/cats')
+  }
 
 export function addCat(cat){
   return {

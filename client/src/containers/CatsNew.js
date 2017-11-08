@@ -9,6 +9,7 @@ class CatsNew extends Component {
       color: '',
       age: '',
       details: '',
+      photo: '',
     };
   }
 
@@ -30,21 +31,25 @@ class CatsNew extends Component {
       <div>
         <h2>Add a Stray Cat Sighting</h2>
         <form onSubmit={this.handleOnSubmit} >
-          <input
+        <p>Color: <input
             type="text"
             placeholder="Color"
             name="color"
-            onChange={this.handleOnChange} />
-          <input
+            onChange={this.handleOnChange} /></p>
+        <p>Age: <input
             type="text"
             placeholder="Age"
             name="age"
-            onChange={this.handleOnChange} />
-          <input
+            onChange={this.handleOnChange} /></p>
+        <p>Details: <input
             type="text"
             placeholder="Details"
             name="details"
-            onChange={this.handleOnChange} />
+            onChange={this.handleOnChange} /></p>
+        <p>Upload image (optional): <input
+            type="file"
+            name="photo"
+            onChange={this.handleOnChange} /></p>
           <input
             type="submit"
             value="Add Stray" />
