@@ -6,3 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+kitty = Cat.create!(
+  color: "black",
+  age: "adult",
+  details: "Has white on front two paws",
+)
+
+kitty.locations.create(
+  lattitude: "40.717543",
+  longitude: "-73.959888"
+)
+
+kitty.locations.create(
+  lattitude: "40.714629",
+  longitude: "-73.958012"
+)
