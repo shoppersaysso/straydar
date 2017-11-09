@@ -1,16 +1,16 @@
 import fetch from 'isomorphic-fetch'
 
 export function getCats() {
-  return (dispatch) => {
-    dispatch({ type: 'GET_CATS' });
-    return fetch('/api/v1/cats')
-      .then(response => response.json())
-      .then(cats => dispatch({ type: 'GET_CATS', cats }));
-  };
-}
 
-export function addCat(cat){
-  return {
-    type: 'ADD_CAT',
-  };
-};
+  return function(dispatch){
+    dispatch({type: 'LOADING_CATS'})
+    return fetch('http://localhost:3000/api/cats', {'mode': 'no-cors'})
+    .then(response => response.json())
+    .then(responseData => {
+      dispatch({type: 'GET_CATS', payload: responseData })
+    })
+    .catch(error => {
+      console.log('Error fetching data', error);
+    });
+  }
+}

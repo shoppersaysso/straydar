@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addCat } from '../actions/getCats';
+
 
 class CatsNew extends Component {
   constructor(props) {
@@ -59,4 +59,4 @@ class CatsNew extends Component {
   }
 };
 
-export default connect(null, { addCat })(CatsNew);
+export default connect(null, null)(CatsNew);

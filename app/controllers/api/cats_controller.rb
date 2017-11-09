@@ -1,12 +1,12 @@
 
-  class Api::V1::CatsController < ApiController
+  class Api::CatsController < ApiController
     before_action :set_cat, only: [:show, :update, :destroy]
 
     # GET /cats
     def index
       @cats = Cat.all
 
-      render json: @cats
+      render json: @cats, status: 200
     end
 
     # GET /cats/1

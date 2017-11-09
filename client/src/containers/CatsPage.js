@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import { getCats } from '../actions/getCats';
 import CatsNew from './CatsNew';
 import CatsShow from './CatsShow';
 import CatsList from '../components/CatsList';
 
 class CatsPage extends Component {
 
-  componentDidMount() {
-    this.props.getCats();
-  }
 
   render() {
     const { match, cats } = this.props;
@@ -36,4 +32,4 @@ const mapStateToProps = state => {
   };
 }
 
-export default connect(mapStateToProps, { getCats })(CatsPage);
+export default connect(mapStateToProps)(CatsPage);

@@ -8,17 +8,25 @@ import CatsNew from './containers/CatsNew';
 import Locations from './components/Locations';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from './actions/getCats.js';
 import logo from './logo.png';
 import './App.css';
+import * as actions from './actions/getCats'
 
 export class App extends Component {
-  componentDidMount() {
-      console.log('component did mount')
-      this.props.actions.getCats()
+
+  constructor() {
+    super();
+    this.state = {
+      cats: []
+    };
   }
 
+  componentDidMount() {
+    this.props.actions.getCats()
+  };
+
   render() {
+    console.log(this.state.cats)
     return (
       <Router>
         <div className="App">
@@ -36,15 +44,15 @@ export class App extends Component {
           <p className="App-intro">
             Help locate stray cats
           </p>
-          <CatsList catList={this.props.catList} />
         </div>
       </Router>
     );
   }
 }
 
+
 function mapStateToProps(state) {
-  return {cats: state.cats }
+  return {cats: state.cats}
 }
 
 function mapDispatchToProps(dispatch) {
