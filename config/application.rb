@@ -31,6 +31,7 @@ module Straydar
       'Access-Control-Request-Method' => '*'
     })
 
+
     config.app_generators.scaffold_controller = :scaffold_controller
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

@@ -5,14 +5,14 @@ const CatsList = (props) => {
   function listCats() {
     return props.cats.map(cat => {
       return (
-        <ul>
-          <li key={cat.id}>
+          <div key={cat.id}>
             <p>Color: {cat.color}</p>
             <p>Age: {cat.age}</p>
             <p>Details: {cat.details}</p>
-            <p>Photo: <img src={cat.photo} className="thumbnail responsive" style={{height: '220px', width: '221px', margin: 'auto'}}/></p>
-          </li>
-        </ul>
+            <p>Photo:</p>
+            <p><img src={cat.photo} className="thumbnail responsive" alt="presentation"/></p>
+            <p>Locations:</p>
+        </div>
       )
     })
   }
