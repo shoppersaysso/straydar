@@ -1,52 +1,44 @@
+class API::CatsController < ApiController
+  before_action :set_cat, only: [:show, :update, :destroy]
 
-  class Api::CatsController < ApiController
-    before_action :set_cat, only: [:show, :update, :destroy]
+  def index
+    cats = Cat.all
 
-    # GET /cats
-    def index
-      @cats = Cat.all
-
-      render json: @cats, status: 200
-    end
-
-    # GET /cats/1
-    def show
-      render json: @cat
-    end
-
-    # POST /cats
-    def create
-      @cat = Cat.new(cat_params)
-
-      if @cat.save
-        render json: @cat, status: :created, location: @cat
-      else
-        render json: @cat.errors, status: :unprocessable_entity
-      end
-    end
-
-    # PATCH/PUT /cats/1
-    def update
-      if @cat.update(cat_params)
-        render json: @cat
-      else
-        render json: @cat.errors, status: :unprocessable_entity
-      end
-    end
-
-    # DELETE /cats/1
-    def destroy
-      @cat.destroy
-    end
-
-    private
-      # Use callbacks to share common setup or constraints between actions.
-      def set_cat
-        @cat = Cat.find(params[:id])
-      end
-
-      # Only allow a trusted parameter "white list" through.
-      def cat_params
-        params.require(:cat).permit(:color, :age, :details, :photo)
-      end
+    render json: cats, status: 200
   end
+
+  def show
+    render json: cat
+  end
+
+  def create
+    cat = Cat.new(cat_params)
+
+    if cat.save
+      render json: cat
+    else
+      render json: cat.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if cat.update(cat_params)
+      render json: cat
+    else
+      render json: cat.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    cat.destroy
+  end
+
+  private
+    def set_cat
+      cat = Cat.find(params[:id])
+    end
+
+    def cat_params
+      params.require(:cat).permit(:color, :age, :details, :photo)
+    end
+end
