@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const CatsList = (props) => {
 
@@ -25,4 +26,11 @@ const CatsList = (props) => {
   )
   }
 
-export default CatsList;
+
+  const mapStateToProps = state => {
+    return {
+      cats: state.cats
+    };
+  }
+
+export default connect(mapStateToProps)(CatsList);

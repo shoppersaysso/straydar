@@ -7,6 +7,7 @@ import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 import { StraydarApp } from './App';
 import { Provider } from 'react-redux';
+import 'semantic-ui-css/semantic.css'
 
 
 const store = createStore(

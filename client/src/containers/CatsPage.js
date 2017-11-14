@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import CatsNew from './CatsNew';
 import CatsShow from './CatsShow';
+import CatsList from '../components/CatsList';
 
 class CatsPage extends Component {
 
@@ -18,6 +19,7 @@ class CatsPage extends Component {
           <Route exact path={match.url} render={() => (
             <h3>Please select a Cat from the list.</h3>
           )}/>
+        <CatsList cats={this.props.cats}/>
         </Switch>
       </div>
     );
