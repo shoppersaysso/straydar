@@ -10,7 +10,7 @@ const CatsList = (props) => {
         <div key={cat.id}>
           <Grid>
             <Grid.Column width={5}>
-              <p><img src={cat.photo} className="thumbnail responsive" alt="presentation"/></p>
+              <p><img src={cat.photo}/></p>
             </Grid.Column>
             <Grid.Column width={6}>
               <h2>Cat Details</h2>
