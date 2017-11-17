@@ -4,11 +4,11 @@ class API::CatsController < ApiController
   def index
     cats = Cat.all
 
-    render json: cats, status: 200
+    render json: cats.as_json(:only => [:id, :color, :age, :details, :photo], :methods => [:photo_url]), status: 200
   end
 
   def show
-    render json: cat
+    render json: cat.as_json(:only => [:id, :color, :age, :details, :photo], :methods => [:photo_url]), status: 200
   end
 
   def create

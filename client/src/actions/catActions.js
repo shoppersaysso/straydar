@@ -53,3 +53,58 @@ export function catsFetch(url) {
       .catch( () => dispatch(catsHasErrored(true)));
   }
 }
+
+
+export function locationHasErrored(bool) {
+    return {
+        type: 'LOCATION_HAS_ERRORED',
+        hasErrored: bool
+    };
+}
+
+export function locationIsLoading(bool) {
+    return {
+        type: 'LOCATION_IS_LOADING',
+        isLoading: bool
+    };
+}
+
+export function locationFetchDataSuccess(locations) {
+    return {
+        type: 'LOCATION_FETCH_DATA_SUCCESS',
+        locations
+    };
+}
+
+export function removeLocation(id) {
+	return {
+		type: 'REMOVE_LOCATION',
+		id
+	}
+}
+
+export function addLocation(location) {
+	return {
+		type: 'ADD_LOCATION',
+		location
+	}
+}
+
+
+export function locationFetch(url) {
+  return (dispatch) => {
+    return fetch('/api/locations', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+   })
+      .then(response => response.json())
+      .then(locations => {
+          console.log(locations)
+          dispatch(locationFetchDataSuccess(locations));
+      })
+      .catch( () => dispatch(locationHasErrored(true)));
+  }
+}

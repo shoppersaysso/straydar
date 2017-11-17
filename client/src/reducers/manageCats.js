@@ -22,6 +22,11 @@ export function cats(state = [], action) {
   switch (action.type) {
     case 'CATS_FETCH_DATA_SUCCESS':
       return action.cats;
+    case 'ADD_CAT':
+      return [].concat(state, action.payload)
+    case 'REMOVE_CAT':
+      let idx = state.indexOf(action.payload)
+      return [].concat(state.slice(0, idx), state.slice(idx + 1, state.length))
 
     default:
       return state;

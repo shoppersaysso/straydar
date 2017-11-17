@@ -1,14 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Segment } from 'semantic-ui-react';
 
 
-const Locations = ({ locations }) => {
 
+const Locations = (props) => {
+
+  function listLocations() {
+    return props.locations.map(location => {
+      return (<div key={location.id}>
+            <p>Lattitude: {location.lattitude}</p>
+            <p>Longitude: {location.longitude}</p>
+
+      </div>
+    )
+  })
+}
 
   return (
-    <div>
+    <Segment>
       <h1>Locations</h1>
-    </div>
+      {listLocations()}
+    </Segment>
   );
 };
 
-export default Locations;
+
+  const mapStateToProps = state => {
+    return {
+      locations: state.locations,
+
+    };
+  }
+
+export default connect(mapStateToProps)(Locations);

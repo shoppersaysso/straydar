@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Segment, Grid } from 'semantic-ui-react'
+import { Segment, Grid } from 'semantic-ui-react';
+import listLocations from './Locations'
+
 
 const CatsList = (props) => {
 
@@ -10,7 +12,7 @@ const CatsList = (props) => {
         <div key={cat.id}>
           <Grid>
             <Grid.Column width={5}>
-              <p><img src={cat.photo}/></p>
+              <p><img src={cat.photo_url}/></p>
             </Grid.Column>
             <Grid.Column width={6}>
               <h2>Cat Details</h2>
@@ -20,6 +22,8 @@ const CatsList = (props) => {
             </Grid.Column>
             <Grid.Column width={5}>
               <h2>Locations:</h2>
+
+
             </Grid.Column>
           </Grid>
         </div>
@@ -30,6 +34,8 @@ const CatsList = (props) => {
   return (
     <Segment>
     {listCats()}
+
+
     </Segment>
   )
 }

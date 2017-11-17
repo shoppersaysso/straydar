@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import CatsList from './components/CatsList';
-import CatsPage from './containers/CatsPage';
+// import CatsPage from './containers/CatsPage';
 import CatsNew from './containers/CatsNew';
 import About from './components/About';
 import Locations from './components/Locations';
@@ -21,8 +21,12 @@ export class App extends Component {
    if (this.props.cats.length === 0) {
      console.log('in component did mount')
      this.props.actions.catsFetch()
+     this.props.actions.locationFetch()
+    }
+
    }
- }
+
+
 
   render() {
 
@@ -56,7 +60,10 @@ export class App extends Component {
 }
 
   function mapStateToProps(state) {
-    return { cats: state.cats}
+    return {
+      cats: state.cats,
+      locations: state.locations
+    }
   }
 
   function mapDispatchToProps(dispatch) {
