@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Segment, Grid } from 'semantic-ui-react'
+import { Segment, Grid } from 'semantic-ui-react';
+import { addCat } from '../actions/catActions';
 
 
 class CatsNew extends Component {
@@ -11,14 +12,15 @@ class CatsNew extends Component {
       age: '',
       details: '',
       photo: '',
+      address: '',
     };
   }
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const { addCat, history } = this.props
+    const addCat = this.props;
     addCat(this.state);
-    history.push('/cats');
+    window.history.push(`/cats`)
   }
 
   handleOnChange = event => {
@@ -41,15 +43,19 @@ class CatsNew extends Component {
                 placeholder="Color"
                 name="color"
                 onChange={this.handleOnChange} /></p>
-            <p>Age:   <input
-                type="text"
-                placeholder="Age"
-                name="age"
-                onChange={this.handleOnChange} /></p>
+            <p>Age:   <select value={this.state.value} onChange={this.handleOnChange} name="age">
+                <option defaultValue="adult">Adult</option>
+                <option value="kitten">Kitten</option>
+                </select></p>
             <p>Details: <input
                 type="text"
-                placeholder="Details"
+                placeholder="spots, stripes, etc."
                 name="details"
+                onChange={this.handleOnChange} /></p>
+            <p>Closest Address :</p>
+            <p><textarea rows="4" cols="50"
+                name="address"
+                placeholder="(include street number, street name, city, and state)"
                 onChange={this.handleOnChange} /></p>
             <p>Upload image (optional):</p>
             <p><input
@@ -69,4 +75,4 @@ class CatsNew extends Component {
   }
 };
 
-export default connect(null, null)(CatsNew);
+export default connect(null, { addCat })(CatsNew);

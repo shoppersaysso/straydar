@@ -5,12 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
 
-kitty = Cat.create!(
+kitty1 = Cat.create!(
   color: "black",
-  age: "adult",
+  age: "Adult",
   details: "Has white on front two paws",
-  latitude: "40.717543",
-  longitude: "-73.959888"
+  address: "164 Bedford Avenue, Brooklyn, NY"
+)
+
+kitty2 = Cat.create!(
+  color: "orange",
+  age: "Adult",
+  details: "striped, white face",
+  address: "602 Driggs Avenue, Brooklyn, NY"
+)
+
+kitty2 = Cat.create!(
+  color: "calico",
+  age: "Kitten",
+  details: "bright blue eyes",
+  address: "50 N 5th Street, Brooklyn, NY"
 )

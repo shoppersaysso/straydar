@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {connect} from 'react-redux';
 import logo from './logo.png';
 import 'semantic-ui-css/semantic.css'
 import './App.css';
-// import { Container, Header, Segment, Button, Icon, Dimmer, Loader, Divider } from 'semantic-ui-react'
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
-import CatsList from './components/CatsList';
-// import CatsPage from './containers/CatsPage';
+import CatsShow from './containers/CatsShow';
+import CatsPage from './containers/CatsPage';
 import CatsNew from './containers/CatsNew';
 import About from './components/About';
 import Locations from './components/Locations';
@@ -19,10 +18,9 @@ export class App extends Component {
 
   componentDidMount() {
    if (this.props.cats.length === 0) {
-     console.log('in component did mount')
+     console.log('component did mount')
      this.props.actions.catsFetch()
     }
-
    }
 
 
@@ -45,12 +43,14 @@ export class App extends Component {
           <div>
             <NavBar />
             <Route exact path="/" component={Home} />
-            <Route exact path="/cats" component={CatsList} />
+            <Route exact path="/cats" component={CatsPage} />
             <Route exact path="/cats/new" component={CatsNew} />
+            <Route exact path="/cats/:id" component={CatsShow} />
             <Route exact path="/locations" component={Locations} />
             <Route exact path="/about" component={About} />
           </div>
           <p className="App-intro">
+
           </p>
         </div>
       </Router>
@@ -60,8 +60,7 @@ export class App extends Component {
 
   function mapStateToProps(state) {
     return {
-      cats: state.cats,
-      addresses: state.cats.addresses
+      cats: state.cats
     }
   }
 
