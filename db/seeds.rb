@@ -11,14 +11,6 @@ kitty = Cat.create!(
   color: "black",
   age: "adult",
   details: "Has white on front two paws",
-)
-
-kitty.locations.create(
-  lattitude: "40.717543",
+  latitude: "40.717543",
   longitude: "-73.959888"
-)
-
-kitty.locations.create(
-  lattitude: "40.714629",
-  longitude: "-73.958012"
 )

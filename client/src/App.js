@@ -21,7 +21,6 @@ export class App extends Component {
    if (this.props.cats.length === 0) {
      console.log('in component did mount')
      this.props.actions.catsFetch()
-     this.props.actions.locationFetch()
     }
 
    }
@@ -62,7 +61,7 @@ export class App extends Component {
   function mapStateToProps(state) {
     return {
       cats: state.cats,
-      locations: state.locations
+      addresses: state.cats.addresses
     }
   }
 

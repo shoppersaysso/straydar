@@ -28,7 +28,7 @@ const Locations = (props) => {
 
   const mapStateToProps = state => {
     return {
-      locations: state.locations,
+      locations: state.cats.adresses,
 
     };
   }

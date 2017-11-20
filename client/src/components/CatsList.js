@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Segment, Grid } from 'semantic-ui-react';
-import listLocations from './Locations'
 
 
 const CatsList = (props) => {
@@ -21,9 +20,11 @@ const CatsList = (props) => {
               <p>Details: {cat.details}</p>
             </Grid.Column>
             <Grid.Column width={5}>
-              <h2>Locations:</h2>
-
-
+              <h2>Location Map:</h2>
+                <iframe width="500" height="300" frameborder="0" styles="border:0"
+                 src={"https://www.google.com/maps/embed/v1/place?key=AIzaSyB87EmTF2pCpIhrchHozxrDYM-Vcj8aZoc&q=" + cat.address}
+                 allowfullscreen>
+                </iframe>
             </Grid.Column>
           </Grid>
         </div>
