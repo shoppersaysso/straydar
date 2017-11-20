@@ -7,10 +7,9 @@ import { Segment } from 'semantic-ui-react';
 const Locations = (props) => {
 
   function listLocations() {
-    return props.locations.map(location => {
+    return props.cats.addresses.map(location => {
       return (<div key={location.id}>
-            <p>Lattitude: {location.lattitude}</p>
-            <p>Longitude: {location.longitude}</p>
+
 
       </div>
     )

@@ -1,6 +1,6 @@
 class Cat < ApplicationRecord
-  reverse_geocoded_by :latitude, :longitude
-  after_validation :reverse_geocode
+  geocoded_by :address
+  after_validation :geocode
 
   has_attached_file :photo,
   :styles => { :original => "300x300>", :thumb => "100x100>" },

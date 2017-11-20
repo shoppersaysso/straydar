@@ -1,3 +1,4 @@
+
 export function catsHasErrored(state = false, action) {
   switch (action.type) {
     case 'CATS_HAS_ERRORED':
@@ -17,16 +18,27 @@ export function catsIsLoading(state = false, action) {
       return state;
   }
 }
-
 export function cats(state = [], action) {
   switch (action.type) {
+
     case 'CATS_FETCH_DATA_SUCCESS':
       return action.cats;
+
     case 'ADD_CAT':
-      return [].concat(state, action.payload)
+      window.history.push(`/cats/${action.cat.id}`)
+      return [
+        ...state.filter(cat => cat.id !== action.cat.id),
+        Object.assign({}, action.cat)
+      ]
+
     case 'REMOVE_CAT':
-      let idx = state.indexOf(action.payload)
-      return [].concat(state.slice(0, idx), state.slice(idx + 1, state.length))
+      let idx = state.cats.indexOf(action.id)
+      return Object.assign(state, {
+        cats: [
+          state.cats.slice(0, idx),
+          state.cats.slice(idx + 1),
+        ]
+      });
 
     default:
       return state;

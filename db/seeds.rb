@@ -11,6 +11,5 @@ kitty = Cat.create!(
   color: "black",
   age: "adult",
   details: "Has white on front two paws",
-  latitude: "40.717543",
-  longitude: "-73.959888"
+  address: "109 N 5th St, Brooklyn, NY 11249, USA"
 )

@@ -2,22 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import { createStore, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import configureStore from './store/configureStore';
 import { StraydarApp } from './App';
 import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.css'
 
-
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk)
-);
+const store = configureStore();
 
 render(
   <Provider store={store}>
-    <StraydarApp store={store}/>
+     <StraydarApp store={store}/>
   </Provider>,
   document.getElementById('root')
 );
