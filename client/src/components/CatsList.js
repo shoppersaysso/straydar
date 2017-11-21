@@ -5,7 +5,7 @@ import { Segment } from 'semantic-ui-react';
 
 const CatsList = ({ cats }) => {
   const listCats = cats.map(cat =>
-    <li key={cat.id}>  <Link to={`/cats/${cat.id}`}>{cat.color} cat found at {cat.address}</Link></li>
+    <li>  <Link key={cat.id} to={`/cats/${cat.id}`}>{cat.color} cat found at {cat.address}</Link></li>
 
   );
 
