@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import CatsShow from './CatsShow';
 import CatsNew from './CatsNew';
 import CatsList from '../components/CatsList';
@@ -21,7 +21,6 @@ class CatsPage extends Component {
           <h3>Please select a cat from the list for more info.</h3>
         )}/>
       </Switch>
-
       </div>
     );
   }

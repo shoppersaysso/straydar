@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Grid } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 const CatsShow = ({ cat }) =>
     <div key={cat.id}>
@@ -27,6 +28,7 @@ const CatsShow = ({ cat }) =>
         <Grid.Column width={1}>
         </Grid.Column>
       </Grid>
+      <h3><Link to={`/cats`}>Back</Link></h3>
     </div>;
 
 

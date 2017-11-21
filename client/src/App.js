@@ -23,8 +23,6 @@ export class App extends Component {
     }
    }
 
-
-
   render() {
 
     if (this.props.hasErrored) {
@@ -43,11 +41,8 @@ export class App extends Component {
           <div>
             <NavBar />
             <Route exact path="/" component={Home} />
-            <Route exact path="/cats" component={CatsPage} />
-            <Route exact path="/cats/new" component={CatsNew} />
-            <Route exact path="/cats/:catId" component={CatsShow} />
-            <Route exact path="/locations" component={Locations} />
-            <Route exact path="/about" component={About} />
+            <Route exaqct path="/cats" component={CatsPage} />
+            <Route path="/about" component={About} />
           </div>
           <p className="App-intro">
 
