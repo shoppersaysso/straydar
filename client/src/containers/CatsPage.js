@@ -1,30 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import CatsNew from './CatsNew';
 import CatsShow from './CatsShow';
 import CatsList from '../components/CatsList';
 
 class CatsPage extends Component {
 
   render() {
+    const { match, cats } = this.props;
 
-    const { match } = this.props;
-
-    return (
-      <div>
-        <CatsList cats={this.props.cats} />
-        <Switch>
-         <Route path={`${match.url}/new`} component={CatsNew} />
-          <Route path={`${match.url}/:catId`} component={CatsShow}/>
-          <Route exact path={match.url} render={() => (
-            <h3>Please select some criteria to filter cats.</h3>
-          )}/>
-        </Switch>
+  return (
+    <div>
+      <p></p>
+      <Switch>
+        <Route path={`${match.url}/:catId`} component={CatsShow}/>
+        <Route exact path={match.url} render={() => (
+          <h3>Please select a cat from the list for more info.</h3>
+        )}/>
+      </Switch>
+      <CatsList cats={cats} />
       </div>
-    )
+    );
   }
-}
+};
 
 const mapStateToProps = state => {
   return {

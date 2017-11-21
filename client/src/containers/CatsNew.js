@@ -18,9 +18,9 @@ class CatsNew extends Component {
 
   handleOnSubmit = event => {
     event.preventDefault();
-    const addCat = this.props;
+    const { addCat, history } = this.props;
     addCat(this.state);
-    window.history.push(`/cats`)
+    history.push(`/cats`)
   }
 
   handleOnChange = event => {
@@ -44,7 +44,7 @@ class CatsNew extends Component {
                 name="color"
                 onChange={this.handleOnChange} /></p>
             <p>Age:   <select value={this.state.value} onChange={this.handleOnChange} name="age">
-                <option defaultValue="adult">Adult</option>
+                <option value="adult">Adult</option>
                 <option value="kitten">Kitten</option>
                 </select></p>
             <p>Details: <input

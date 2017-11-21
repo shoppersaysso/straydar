@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { cats, catsHasErrored, catsIsLoading } from './manageCats';
+import { catsHasErrored, catsIsLoading, cats } from './manageCats';
 
 export default combineReducers({
-    cats,
     catsHasErrored,
-    catsIsLoading
+    catsIsLoading,
+    cats
 });

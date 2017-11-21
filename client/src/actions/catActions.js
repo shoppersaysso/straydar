@@ -21,20 +21,12 @@ export function catsFetchDataSuccess(cats) {
     };
 }
 
-export function removeCat(id) {
-	return {
-		type: 'REMOVE_CAT',
-		id
-	}
-}
-
 export function addCat(cat) {
 	return {
 		type: 'ADD_CAT',
 		cat
 	}
 }
-
 
 export function catsFetch(url) {
   return (dispatch) => {
