@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import logo from './logo.png';
 import 'semantic-ui-css/semantic.css'
 import './App.css';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
@@ -11,7 +11,7 @@ import CatsShow from './containers/CatsShow';
 import CatsPage from './containers/CatsPage';
 import CatsNew from './containers/CatsNew';
 import About from './components/About';
-import Locations from './components/Locations';
+import Locations from './containers/Locations';
 import * as actions from './actions/catActions';
 
 export class App extends Component {
@@ -40,9 +40,14 @@ export class App extends Component {
           </div>
           <div>
             <NavBar />
-            <Route exact path="/" component={Home} />
-            <Route exaqct path="/cats" component={CatsPage} />
-            <Route path="/about" component={About} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/cats" component={CatsPage} />
+              <Route exact path="/cats/new" component={CatsNew} />
+              <Route exact path="/cats/:catId" component={CatsShow} />
+              <Route path="/locations" component={Locations} />
+              <Route path="/about" component={About} />
+            </Switch>
           </div>
           <p className="App-intro">
 
@@ -55,7 +60,9 @@ export class App extends Component {
 
   function mapStateToProps(state) {
     return {
-      cats: state.cats
+      cats: state.cats,
+      addresses: state.cats.map(cat =>
+        cat.address)
     }
   }
 

@@ -12,19 +12,25 @@ kitty1 = Cat.create!(
   color: "black",
   age: "Adult",
   details: "Has white on front two paws",
-  address: "164 Bedford Avenue, Brooklyn, NY"
+  address: "164 Bedford Avenue, Brooklyn, NY",
+  latitude: 40.718369,
+  longitude: -73.957607
 )
 
 kitty2 = Cat.create!(
   color: "orange",
   age: "Adult",
   details: "striped, white face",
-  address: "602 Driggs Avenue, Brooklyn, NY"
+  address: "602 Driggs Avenue, Brooklyn, NY",
+  latitude: 40.715975,
+  longitude: -73.957996
 )
 
 kitty2 = Cat.create!(
   color: "calico",
   age: "Kitten",
   details: "bright blue eyes",
-  address: "50 N 5th Street, Brooklyn, NY"
+  address: "50 N 5th Street, Brooklyn, NY",
+  latitude: 40.718564,
+  longitude: -73.961922
 )

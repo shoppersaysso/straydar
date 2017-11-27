@@ -44,6 +44,7 @@ class CatsNew extends Component {
                 name="color"
                 onChange={this.handleOnChange} /></p>
             <p>Age:   <select value={this.state.value} onChange={this.handleOnChange} name="age">
+                <option value="select"></option>
                 <option value="adult">Adult</option>
                 <option value="kitten">Kitten</option>
                 </select></p>
