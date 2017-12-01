@@ -36,7 +36,9 @@ export class App extends Component {
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h2>Straydar</h2>
+            <div className="App-title">
+              Straydar
+            </div>
           </div>
           <div>
             <NavBar />
