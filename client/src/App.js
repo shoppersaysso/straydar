@@ -11,7 +11,7 @@ import CatsShow from './containers/CatsShow';
 import CatsPage from './containers/CatsPage';
 import CatsNew from './containers/CatsNew';
 import About from './components/About';
-import Locations from './containers/Locations';
+
 import * as actions from './actions/catActions';
 
 export class App extends Component {
@@ -45,7 +45,6 @@ export class App extends Component {
               <Route exact path="/cats" component={CatsPage} />
               <Route exact path="/cats/new" component={CatsNew} />
               <Route exact path="/cats/:catId" component={CatsShow} />
-              <Route path="/locations" component={Locations} />
               <Route path="/about" component={About} />
             </Switch>
           </div>

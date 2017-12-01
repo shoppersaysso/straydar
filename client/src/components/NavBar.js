@@ -15,7 +15,6 @@ export default class NavBar extends Component {
           <Menu pointing secondary>
             <Menu.Item as={ NavLink } name='home' to='/' active={activeItem === 'home'} onClick={this.handleItemClick} />
             <Menu.Item as={ NavLink } name='cats' to='/cats' active={activeItem === 'cats'} onClick={this.handleItemClick} />
-            <Menu.Item as={ NavLink } name='locations' to='/locations' active={activeItem === 'locations'} onClick={this.handleItemClick} />
             <Menu.Item as={ NavLink } name='report a stray' to='/cats/new' active={activeItem === 'report a stray'} onClick={this.handleItemClick} />
 
             <Menu.Menu position='right'>

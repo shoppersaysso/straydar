@@ -1,40 +1,40 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import CatsList from '../components/CatsList';
 import Cat from '../components/Cat';
 
 class CatsPage extends Component {
-
   constructor() {
     super();
     this.state = {
-      search: ''
+      search: '',
     };
   }
 
   updateSearch(event) {
-    this.setState({search: event.target.value.substr(0,
-    20)})
+    this.setState({search: event.target.value})
   }
 
   render() {
-    let filteredCats = this.props.cats;
-    const { cats } = this.props;
+    let filteredCats = this.props.cats.filter((cat) => {
+      return cat.color.toLowerCase().indexOf(this.state.search) !== -1;
+      }
+    );
     return (
       <div>
         <br></br>
           <header>
             <h1>Reported Cats</h1>
+            <input type="text"
+              value={this.state.search}
+              placeholder="Type a color to filter cats..."
+              onChange={this.updateSearch.bind(this)}/>
           </header>
         <ul>
           {filteredCats.map((cat)=> {
-            return <CatsShow cat={cat}
-              key={cat.id}/>
+            return <Cat key={cat.id} cat={cat}/>
           })}
         </ul>
-        <input type="text"
-          value={this.state.search}
-          onChange={this.updateSearch.bind(this)}/>
+
     </div>
     );
   }
