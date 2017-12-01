@@ -61,8 +61,7 @@ export class App extends Component {
   function mapStateToProps(state) {
     return {
       cats: state.cats,
-      addresses: state.cats.map(cat =>
-        cat.address)
+      filter: null
     }
   }
 

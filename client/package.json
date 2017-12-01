@@ -5,9 +5,18 @@
   "proxy": "http://localhost:3001",
   "dependencies": {
     "axios": "^0.17.1",
-    "react": "^16.0.0",
+    "create-react-class": "^15.6.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
     "react-dom": "^16.0.0",
-    "react-scripts": "1.0.17"
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.0.17",
+    "react-text-filter": "^3.0.1",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "semantic-ui-css": "^2.2.12",
+    "semantic-ui-react": "^0.77.0"
   },
   "scripts": {
     "start": "react-scripts start",

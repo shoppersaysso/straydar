@@ -1,17 +1,41 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CatsList from '../components/CatsList';
+import Cat from '../components/Cat';
 
 class CatsPage extends Component {
 
-  render() {
-    const { match, cats } = this.props;
+  constructor() {
+    super();
+    this.state = {
+      search: ''
+    };
+  }
 
-  return (
-    <div>
-      <p></p>
-      <CatsList cats={cats} />
-      </div>
+  updateSearch(event) {
+    this.setState({search: event.target.value.substr(0,
+    20)})
+  }
+
+  render() {
+    let filteredCats = this.props.cats;
+    const { cats } = this.props;
+    return (
+      <div>
+        <br></br>
+          <header>
+            <h1>Reported Cats</h1>
+          </header>
+        <ul>
+          {filteredCats.map((cat)=> {
+            return <CatsShow cat={cat}
+              key={cat.id}/>
+          })}
+        </ul>
+        <input type="text"
+          value={this.state.search}
+          onChange={this.updateSearch.bind(this)}/>
+    </div>
     );
   }
 };
