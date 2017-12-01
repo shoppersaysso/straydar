@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Segment } from 'semantic-ui-react';
 import Cat from '../components/Cat';
 
 class CatsPage extends Component {
@@ -30,9 +31,12 @@ class CatsPage extends Component {
               placeholder=" color "
               onChange={this.updateSearch.bind(this)}/>
           </header>
+          <br></br>
         <ul>
           {filteredCats.map((cat)=> {
-            return <Cat key={cat.id} cat={cat}/>
+            return <Segment>
+              <Cat key={cat.id} cat={cat}/>
+            </Segment>
           })}
         </ul>
 

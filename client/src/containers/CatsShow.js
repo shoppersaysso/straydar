@@ -6,11 +6,8 @@ import Cat from '../components/Cat';
 const CatsShow = ({ cat }) =>
   <div>
     <Cat key={cat.id} cat={cat}/>
-    <h3><Link to={`/cats`}>Back</Link></h3>
+    <h3 className="App-link"><Link to={`/cats`}> Back</Link></h3>
   </div>
-
-
-
 
 const mapStateToProps = (state, ownProps) => {
   const cat = state.cats.find(cat => cat.id === +ownProps.match.params.catId)

@@ -12,7 +12,7 @@ class Cat extends Component {
         <Grid.Column width={4}>
           <Link to={`/cats/${this.props.cat.id}`}><h2>Have you seen me?</h2></Link>
           <br></br>
-          <p><img src={this.props.cat.photo} width="200" height="300" alt="not found"/></p>
+          <p><img src={this.props.cat.photo} alt="not found"/></p>
         </Grid.Column>
         <Grid.Column width={5}>
           <h2>Cat Description:</h2>
