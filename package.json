@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "default-passive-events": "^1.0.0"
+    "default-passive-events": "^1.0.0",
+    "superagent": "^3.8.1"
   }
 }

@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Menu } from 'semantic-ui-react'
 
 export default class NavBar extends Component {
+  state = { activeItem: 'home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     render() {
+      const { activeItem } = this.state
 
       return (
         <div>
           <Menu pointing secondary>
-            <Menu.Item as={ NavLink } name='home' to='/' />
-            <Menu.Item as={ NavLink } name='about' to='/about' />
-            <Menu.Item as={ NavLink } name='cats' to='/cats' />
-            <Menu.Item as={ NavLink } name='report a stray' to='/cats/new' />
+            <Menu.Item as={Link} to='/' name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
+            <Menu.Item as={Link} to='/about' name='about' active={activeItem === 'about'} onClick={this.handleItemClick} />
+            <Menu.Item as={Link} to='/cats' name='cats' active={activeItem === 'cats'} onClick={this.handleItemClick} />
+            <Menu.Item as={Link} to='/cats/new' name='report a stray' active={activeItem === 'report a stray'} onClick={this.handleItemClick} />
           </Menu>
+          {this.props.children}
         </div>
       )
     }

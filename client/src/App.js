@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import logo from './logo.png';
 import 'semantic-ui-css/semantic.css'
 import './App.css';
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
@@ -11,7 +11,6 @@ import CatsShow from './containers/CatsShow';
 import CatsPage from './containers/CatsPage';
 import CatsNew from './containers/CatsNew';
 import About from './components/About';
-
 import * as actions from './actions/catActions';
 
 export class App extends Component {
@@ -36,18 +35,18 @@ export class App extends Component {
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <div className="App-title">
-              Straydar
-            </div>
+            <h2>Straydar</h2>
           </div>
-          <div>
+        <div>
+        <div>
             <NavBar />
+          </div>
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/cats" component={CatsPage} />
               <Route exact path="/cats/new" component={CatsNew} />
               <Route exact path="/cats/:catId" component={CatsShow} />
-              <Route path="/about" component={About} />
+              <Route exact path="/about" component={About} />
             </Switch>
           </div>
           <p className="App-intro">
