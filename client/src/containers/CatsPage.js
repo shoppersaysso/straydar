@@ -24,9 +24,10 @@ class CatsPage extends Component {
         <br></br>
           <header>
             <h1>Reported Cats</h1>
+            <em>Type the color of the cat to filter:   </em>
             <input type="text"
               value={this.state.search}
-              placeholder="Type a color to filter cats..."
+              placeholder=" color "
               onChange={this.updateSearch.bind(this)}/>
           </header>
         <ul>
