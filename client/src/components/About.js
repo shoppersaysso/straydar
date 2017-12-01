@@ -19,7 +19,7 @@ const About = () => {
         <br></br>
           <iframe title="petFinder"
           src="https://fpm.petfinder.com/petlist/petlist.cgi?shelter=ALL_NY&status=A&age=&limit=50&offset=0&animal=Cat&title=Adoptable Pets in Your Area&style=10&ref=753ntezPO7rdwnq"
-          width="700px" height="600px" hspace="0" vspace="0"  frameborder="10" scrolling="yes" marginheight="0" marginwidth="0" bordercolor="#000000"></iframe>
+          width="700px" height="600px" hspace="0" vspace="0"  frameBorder="0" scrolling="yes" marginHeight="0" marginWidth="0"></iframe>
           <br></br>
           <br></br>
           <br></br>

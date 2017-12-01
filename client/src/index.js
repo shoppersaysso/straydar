@@ -6,6 +6,7 @@ import configureStore from './store/configureStore';
 import { StraydarApp } from './App';
 import { Provider } from 'react-redux';
 import 'semantic-ui-css/semantic.css'
+require('default-passive-events');
 
 const store = configureStore();
 

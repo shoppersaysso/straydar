@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import logo from './logo.png';
 import 'semantic-ui-css/semantic.css'
 import './App.css';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
