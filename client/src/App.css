@@ -18,14 +18,17 @@
   font-size: 2em;
 }
 
+.Drop-Zone{
+  float: center;
+}
+
 .App-intro {
   font-size: large;
 }
 
 .App-link {
   text-align: left;
-  margin: 10px;
-  padding: 20px;
+  padding-left: 60px;
 }
 
 @keyframes App-logo-spin {

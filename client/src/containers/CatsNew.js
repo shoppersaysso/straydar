@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Segment, Grid } from 'semantic-ui-react';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
 import { addCat } from '../actions/catActions';
 
+const CLOUDINARY_UPLOAD_PRESET = 'g4m3zs3d';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/straydar/upload';
 
 class CatsNew extends Component {
   constructor(props) {
@@ -13,6 +17,7 @@ class CatsNew extends Component {
       details: '',
       photo: '',
       address: '',
+      uploadedFileCloudinaryUrl: ''
     };
   }
 
@@ -26,6 +31,32 @@ class CatsNew extends Component {
   handleOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
+    });
+  }
+
+  onImageDrop(files) {
+    this.setState({
+      uploadedFile: files[0]
+    });
+
+    this.handleImageUpload(files[0]);
+  }
+
+  handleImageUpload(file) {
+    let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                        .field('file', file);
+
+    upload.end((err, response) => {
+      if (err) {
+        console.error(err);
+      }
+
+      if (response.body.secure_url !== '') {
+        this.setState({
+          uploadedFileCloudinaryUrl: response.body.secure_url
+        });
+      }
     });
   }
 
@@ -58,11 +89,21 @@ class CatsNew extends Component {
                 name="address"
                 placeholder="(include street number, street name, city, and state)"
                 onChange={this.handleOnChange} /></p>
-            <p>Upload image (optional):</p>
-            <p><input
-                type="file"
-                name="photo"
-                onChange={this.handleOnChange} /></p>
+            <div className="Drop-Zone">
+            <Dropzone
+               multiple={false}
+               accept="image/*"
+               onDrop={this.onImageDrop.bind(this)}>
+               <p>(Optional) Drop an image or click to select a file to upload.</p>
+             </Dropzone>
+           </div>
+           <div>
+              {this.state.uploadedFileCloudinaryUrl === '' ? null :
+              <div>
+                <p>{this.state.uploadedFile.name}</p>
+                <img src={this.state.uploadedFileCloudinaryUrl} alt="none"/>
+              </div>}
+            </div>
               <input
                 type="submit"
                 value="Report Stray" />

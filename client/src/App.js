@@ -3,14 +3,10 @@ import {connect} from 'react-redux';
 import logo from './logo.png';
 import 'semantic-ui-css/semantic.css'
 import './App.css';
-import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import NavBar from './components/NavBar';
-import Home from './components/Home';
-import CatsShow from './containers/CatsShow';
-import CatsPage from './containers/CatsPage';
-import CatsNew from './containers/CatsNew';
-import About from './components/About';
+import Routes from './components/Routes'
 
 import * as actions from './actions/catActions';
 
@@ -42,13 +38,7 @@ export class App extends Component {
           </div>
           <div>
             <NavBar />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/cats" component={CatsPage} />
-              <Route exact path="/cats/new" component={CatsNew} />
-              <Route exact path="/cats/:catId" component={CatsShow} />
-              <Route path="/about" component={About} />
-            </Switch>
+            <Routes />
           </div>
           <p className="App-intro">
 
