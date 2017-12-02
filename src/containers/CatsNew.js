@@ -16,7 +16,7 @@ class CatsNew extends Component {
       details: '',
       photo: '',
       address: '',
-      photo: ''
+      cloudinaryUrl: ''
     };
   }
 
@@ -45,7 +45,7 @@ class CatsNew extends Component {
 
       if (response.body.secure_url !== '') {
         this.setState({
-          photo: response.body.secure_url
+          cloudinaryUrl: response.body.secure_url
         });
       }
     });
