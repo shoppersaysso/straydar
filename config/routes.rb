@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :locations
   end
 
+  # get 'embed_json' => 'application#options', :via => [:options]
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

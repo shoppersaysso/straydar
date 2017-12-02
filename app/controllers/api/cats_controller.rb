@@ -8,7 +8,7 @@ class API::CatsController < ApiController
   end
 
   def show
-    render json: cat
+    render json: cat, status: 200
   end
 
   def create
@@ -39,6 +39,6 @@ class API::CatsController < ApiController
     end
 
     def cat_params
-      params.require(:cat).permit(:color, :age, :details, :photo)
+      params.require(:cat).permit(:color, :age, :details, :photo, :address)
     end
 end
