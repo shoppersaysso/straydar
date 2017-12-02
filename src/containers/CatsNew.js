@@ -14,9 +14,8 @@ class CatsNew extends Component {
       color: '',
       age: '',
       details: '',
-      photo: '',
       address: '',
-      cloudinaryUrl: ''
+      photo: ''
     };
   }
 
@@ -45,7 +44,7 @@ class CatsNew extends Component {
 
       if (response.body.secure_url !== '') {
         this.setState({
-          cloudinaryUrl: response.body.secure_url
+          photo: response.body.secure_url
         });
       }
     });
@@ -84,8 +83,8 @@ class CatsNew extends Component {
              <p>Upload image (optional):</p>
              <p><input
                  type="file"
-                 name="photoUrl"
-                 onChange={this.handleOnChange} /></p>
+                 name="photo"
+                 onChange={this.handleOnChange}/></p>
               <input
                 type="submit"
                 value="Report Stray" />
