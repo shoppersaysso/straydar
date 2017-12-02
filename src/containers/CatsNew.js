@@ -16,7 +16,7 @@ class CatsNew extends Component {
       details: '',
       photo: '',
       address: '',
-      photoUrl: ''
+      photo: ''
     };
   }
 
@@ -24,7 +24,7 @@ class CatsNew extends Component {
     event.preventDefault();
     const { addCat, history } = this.props;
     addCat(this.state);
-    history.push(`/cats`)
+    history.push(`/cats/${this.props.cat.id}`)
   }
 
   handleOnChange = event => {
@@ -45,7 +45,7 @@ class CatsNew extends Component {
 
       if (response.body.secure_url !== '') {
         this.setState({
-          photoUrl: response.body.secure_url
+          photo: response.body.secure_url
         });
       }
     });
