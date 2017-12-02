@@ -30,7 +30,7 @@ export function addCat(cat) {
 
 export function catsFetch(url) {
   return (dispatch) => {
-    return fetch('http://straydar-api.herokuapp.com/api/cats', {
+    return fetch('https://straydar-api.herokuapp.com/api/cats', {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
