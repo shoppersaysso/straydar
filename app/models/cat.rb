@@ -1,7 +1,16 @@
 class Cat < ApplicationRecord
-  has_many :locations
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
+
   has_attached_file :photo,
-  :styles => { :medium => "300x300>", :thumb => "100x100>" },
-  :default_url => "/assets/:style/default.jpg"
-  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+  :styles => { :original => "300x300>", :thumb => "100x100>" },
+  :default_url => "assets/images/:style/missing.png"
+  do_not_validate_attachment_file_type :photo
+
+
+  def photo_url
+    photo.url(:thumb)
+  end
+
+
 end

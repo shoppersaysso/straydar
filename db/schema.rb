@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171108183907) do
+ActiveRecord::Schema.define(version: 20171120163354) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -48,21 +48,15 @@ ActiveRecord::Schema.define(version: 20171108183907) do
     t.string "age"
     t.string "details"
     t.boolean "rescued", default: false
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
-  end
-
-  create_table "locations", force: :cascade do |t|
-    t.string "lattitude"
-    t.string "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "cat_id"
-    t.index ["cat_id"], name: "index_locations_on_cat_id"
+    t.float "latitude"
+    t.float "longitude"
   end
 
 end

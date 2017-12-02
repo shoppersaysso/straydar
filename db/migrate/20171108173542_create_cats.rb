@@ -5,6 +5,7 @@ class CreateCats < ActiveRecord::Migration[5.1]
       t.string :age
       t.string :details
       t.boolean :rescued, :default => false
+      t.string :address
 
       t.timestamps
     end
