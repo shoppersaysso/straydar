@@ -15,6 +15,7 @@ export class App extends Component {
    if (this.props.cats.length === 0) {
      console.log('component did mount')
      this.props.actions.catsFetch()
+     document.title = "Straydar";
     }
    }
 
