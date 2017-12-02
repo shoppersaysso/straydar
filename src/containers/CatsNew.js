@@ -24,7 +24,7 @@ class CatsNew extends Component {
     event.preventDefault();
     const { addCat, history } = this.props;
     addCat(this.state);
-    history.push(`/cats/${this.props.cat.id}`)
+    history.push(`/cats`)
   }
 
   handleOnChange = event => {
