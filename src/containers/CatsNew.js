@@ -84,7 +84,7 @@ class CatsNew extends Component {
              <p>Upload image (optional):</p>
              <p><input
                  type="file"
-                 name="file"
+                 name="photoUrl"
                  onChange={this.handleOnChange} /></p>
               <input
                 type="submit"
