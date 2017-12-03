@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Segment, Grid } from 'semantic-ui-react';
-import request from 'superagent';
+import Dropzone from 'react-dropzone';
+import axios from 'axios';
 import { addCat } from '../actions/catActions';
 
 const CLOUDINARY_UPLOAD_PRESET = 'g4m3zs3d';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/straydar/upload';
+const CLOUDINARY_API =  '832657894521513';
 
 class CatsNew extends Component {
   constructor(props) {
@@ -32,22 +34,28 @@ class CatsNew extends Component {
     });
   }
 
-  handleImageUpload(file) {
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
-                        .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-                        .field('file', file);
+  handleDrop = files => {
+  const uploaders = files.map(file => {
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+    formData.append("api_key", CLOUDINARY_API);
+    return axios.post(CLOUDINARY_UPLOAD_URL, formData, {
+      headers: { "X-Requested-With": "XMLHttpRequest" },
+    }).then(response => {
+      const data = response.data;
+      const fileURL = data.secure_url
+      console.log(data);
+      this.setState({
+            photo: fileURL
+          });
+    })
+  });
 
-    upload.end((err, response) => {
-      if (err) {
-        console.error(err);
-      }
+  axios.all(uploaders).then(() => {
+  });
 
-      if (response.body.secure_url !== '') {
-        this.setState({
-          photo: response.body.secure_url
-        });
-      }
-    });
+
   }
 
   render() {
@@ -80,11 +88,12 @@ class CatsNew extends Component {
                 placeholder="(include street number, street name, city, and state)"
                 onChange={this.handleOnChange} /></p>
              <br></br>
-             <p>Upload image (optional):</p>
-             <p><input
-                 type="file"
-                 name="photo"
-                 onChange={this.handleOnChange}/></p>
+             <Dropzone
+                onDrop={this.handleDrop}
+                multiple
+                accept="image/*" >
+                <p>Drop a photo or click here to upload:</p>
+              </Dropzone>
               <input
                 type="submit"
                 value="Report Stray" />
