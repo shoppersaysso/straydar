@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
-import {}
 
 class Cat extends Component {
   constructor() {
@@ -19,13 +18,7 @@ class Cat extends Component {
 
   callApi = () => {
     console.log('a')
-    fetch('/api/cats', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
+    fetch('/api/cats')
     .then(response => {
       console.log('b')
       return response.json()})
@@ -45,7 +38,7 @@ class Cat extends Component {
         <Grid.Column width={4}>
           <Link to={`/cats/${cat.id}`}><h2>Have you seen me?</h2></Link>
           <br></br>
-          <p><img src={cat.photo} width="300" height="200" alt={'/images/missing.png'}/></p>
+          <p><img src={cat.photo} width="300" height="200" alt='not found'/></p>
         </Grid.Column>
         <Grid.Column width={5}>
           <h2>Cat Description:</h2>

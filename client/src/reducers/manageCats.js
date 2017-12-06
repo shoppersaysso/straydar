@@ -25,9 +25,13 @@ export function cats(state = [], action) {
     case 'CATS_FETCH_DATA_SUCCESS':
       return action.cats;
 
+    case 'CREATE_NEW_CAT':
+      return state;
+
     case 'ADD_CAT':
-      const cat = Object.assign({}, action.cat, { id: state.length + 1} );
-      return [ ...state, cat ];
+      return [ ...state,
+        action.cat ];
+
     default:
       return state;
   }

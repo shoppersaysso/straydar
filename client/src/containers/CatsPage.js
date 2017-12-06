@@ -34,7 +34,7 @@ class CatsPage extends Component {
           <br></br>
         <ul>
           {filteredCats.reverse().map((cat)=> {
-            return <Segment key={cat.id}>
+            return <Segment key={cat.id} >
               <Cat cat={cat}/>
             </Segment>
           })}

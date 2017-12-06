@@ -17,7 +17,7 @@ class CatsNew extends Component {
       age: '',
       details: '',
       address: '',
-      photo: ''
+      photo_url: ''
     };
   }
 
@@ -46,8 +46,9 @@ class CatsNew extends Component {
       const data = response.data;
       const fileURL = data.secure_url
       console.log(data);
+      console.log(fileURL);
       this.setState({
-            photo: fileURL
+            photo_url: fileURL
           });
     })
   });
@@ -70,7 +71,7 @@ class CatsNew extends Component {
             <h3>Color: <input
                 type="text"
                 placeholder="Color"
-                ref="color"
+                name="color"
                 onChange={this.handleOnChange} /></h3>
             <h3>Age:   <select value={this.state.value} onChange={this.handleOnChange} name="age">
                 <option value="select">---</option>
@@ -80,16 +81,16 @@ class CatsNew extends Component {
             <h3>Details: <input
                 type="text"
                 placeholder="spots, stripes, etc."
-                ref="details"
+                name="details"
                 onChange={this.handleOnChange} /></h3>
             <h3>Closest Address :</h3>
             <p><textarea rows="4" cols="35"
-                ref="address"
+                name="address"
                 placeholder="(include street number, street name, city, and state)"
                 onChange={this.handleOnChange} /></p>
              <br></br>
              <Dropzone
-               ref="photo"
+               name="photo"
                 onDrop={this.handleDrop}
                 multiple
                 accept="image/*" >

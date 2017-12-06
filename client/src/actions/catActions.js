@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
 
 export function catsHasErrored(bool) {
     return {
@@ -21,22 +21,16 @@ export function catsFetchDataSuccess(cats) {
     };
 }
 
-export function addCat(cat) {
-	return {
-		type: 'ADD_CAT',
-		cat
-	}
+export function catsPostNewSuccess(cat) {
+    return {
+        type: 'CATS_POST_NEW_SUCCESS',
+        cat
+    };
 }
 
 export function catsFetch(url) {
   return (dispatch) => {
-    return fetch('/api/cats', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-   })
+    return fetch('/api/cats')
       .then(response => response.json())
       .then(cats => {
           console.log(cats)
@@ -46,28 +40,22 @@ export function catsFetch(url) {
   }
 }
 
-export function catsPost(cat) {
-  return (dispatch) => {
-    let color = this.refs.color.value;
-    let age = this.refs.age.value;
-    let details = this.refs.details.value;
-    let address = this.refs.address.value;
-    let photo = this.refs.photo.value;
-    return
-    $.ajax({
-      url: '/api/cats',
-      type: 'POST',
-      data: {
-        cat: {
-          color: color,
-          age: age,
-          details: details,
-          address: address,
-          photo: photo
-        }
-      },
-      success: (cat) => {
-        this.props.handleSubmit(cat);
-      }
+export function addCat(cat) {
+    return (dispatch) => {
+      dispatch({type: 'CREATE_NEW_CAT'});
+      return fetch('/api/cats', {
+        method: 'POST',
+        body: JSON.stringify(cat),
+        headers: {
+          "Content-Type": "application/json"
+        },
+    },
+    )
+    .then(response => response.json())
+    .then(cat => {
+      console.log(cat)
+      dispatch(catsPostNewSuccess(cat));
+  })
+    .catch( () => dispatch(catsHasErrored(true)));
   }
 }
