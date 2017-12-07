@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Segment, Grid } from 'semantic-ui-react';
-import Dropzone from 'react-dropzone';
-import axios from 'axios';
 import { addCat } from '../actions/catActions';
-
-const CLOUDINARY_UPLOAD_PRESET = 'g4m3zs3d';
-const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/straydar/upload';
-const CLOUDINARY_API =  '832657894521513';
 
 class CatsNew extends Component {
   constructor(props) {
@@ -17,7 +11,7 @@ class CatsNew extends Component {
       age: '',
       details: '',
       address: '',
-      photo_url: ''
+      photo: ''
     };
   }
 
@@ -34,30 +28,11 @@ class CatsNew extends Component {
     });
   }
 
-  handleDrop = files => {
-  const uploaders = files.map(file => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-    formData.append("api_key", CLOUDINARY_API);
-    return axios.post(CLOUDINARY_UPLOAD_URL, formData, {
-      headers: { "X-Requested-With": "XMLHttpRequest" },
-    }).then(response => {
-      const data = response.data;
-      const fileURL = data.secure_url
-      console.log(data);
-      console.log(fileURL);
-      this.setState({
-            photo_url: fileURL
-          });
-    })
-  });
-
-  axios.all(uploaders).then(() => {
-  });
-
-
+  handleCancel = event => {
+    this.props.history.push(`/cats`)
   }
+
+
 
   render() {
     return (
@@ -88,17 +63,22 @@ class CatsNew extends Component {
                 name="address"
                 placeholder="(include street number, street name, city, and state)"
                 onChange={this.handleOnChange} /></p>
-             <br></br>
-             <Dropzone
-               name="photo"
-                onDrop={this.handleDrop}
-                multiple
-                accept="image/*" >
-                <p>Drop a photo or click here to upload:</p>
-              </Dropzone>
+            <h3>Upload a photo (optional):</h3>
+             <input
+                type="file"
+                name="photo"
+                onChange={this.handleOnChange}/>
+              <br></br>
+              <br></br>
               <input
                 type="submit"
+                className="btn btn-primary"
                 value="Report Stray" />
+              <button
+                onClick={this.handleCancel}
+                className="btn btn-danger">
+                Cancel
+              </button>
             </form>
           </Grid.Column>
           <Grid.Column width={4}>
