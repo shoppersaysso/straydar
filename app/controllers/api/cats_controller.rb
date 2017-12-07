@@ -12,10 +12,10 @@ class API::CatsController < ApiController
   end
 
   def create
-    cat = Cat.new(cat_params)
+    cat = Cat.create(cat_params)
 
     if cat.save
-      render json: cat
+      render json: cat, status: 200
     else
       render json: cat.errors, status: :unprocessable_entity
     end

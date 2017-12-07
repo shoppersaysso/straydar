@@ -30,7 +30,13 @@ export function catsPostNewSuccess(cat) {
 
 export function catsFetch(url) {
   return (dispatch) => {
-    return fetch('/api/cats')
+    return fetch('/api/cats', {
+      method: 'GET',
+      headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json'
+     }
+    })
       .then(response => response.json())
       .then(cats => {
           console.log(cats)

@@ -7,25 +7,39 @@ class CatsNew extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: '',
-      age: '',
-      details: '',
-      address: '',
-      photo: ''
+      cat: {
+        color: '',
+        age: '',
+        details: '',
+        address: '',
+        photoUrl: '',
+        photo: null
+      }
     };
   }
 
   handleOnSubmit = event => {
     event.preventDefault();
     const { addCat, history } = this.props;
-    addCat(this.state);
+       addCat(this.state);
     history.push(`/cats`)
-  }
+    }
 
   handleOnChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
+  }
+
+  handleOnPhoto = event => {
+    let reader = new FileReader();
+    let file = event.currentTarget.files[0];
+    console.log(file);
+
+    reader.onloadend = () => {
+      this.setState({ photoUrl: reader.result, photo: file})
+    }
+
   }
 
   handleCancel = event => {
@@ -67,7 +81,7 @@ class CatsNew extends Component {
              <input
                 type="file"
                 name="photo"
-                onChange={this.handleOnChange}/>
+                onChange={this.handleOnPhoto}/>
               <br></br>
               <br></br>
               <input
@@ -80,6 +94,7 @@ class CatsNew extends Component {
                 Cancel
               </button>
             </form>
+            <img className="preview-image" src={this.state.photoUrl} alt=""/>
           </Grid.Column>
           <Grid.Column width={4}>
           </Grid.Column>
