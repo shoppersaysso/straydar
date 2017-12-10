@@ -46,21 +46,21 @@ export function catsFetch(url) {
   }
 }
 
-export function addCat(cat) {
+export function addCat(values) {
     return (dispatch) => {
       dispatch({type: 'CREATE_NEW_CAT'});
-      return fetch('/api/cats', {
+      return fetch(`/api/cats`, {
         method: 'POST',
-        body: JSON.stringify(cat),
+        body: JSON.stringify({cat: values}),
         headers: {
-          "Content-Type": "application/json"
+          'Content-Type': 'application/json'
         },
     },
     )
     .then(response => response.json())
     .then(cat => {
       console.log(cat)
-      dispatch(catsPostNewSuccess(cat));
+      dispatch({type: 'ADD_CAT', cat});
   })
     .catch( () => dispatch(catsHasErrored(true)));
   }

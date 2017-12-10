@@ -29,8 +29,10 @@ export function cats(state = [], action) {
       return state;
 
     case 'ADD_CAT':
-      return [ ...state,
-        action.cat ];
+      return [
+        ...state,
+        action.cat
+      ];
 
     default:
       return state;
