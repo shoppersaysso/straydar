@@ -59,7 +59,6 @@ export function addCat(values) {
     )
     .then(response => response.json())
     .then(cat => {
-      console.log(cat)
       dispatch({type: 'ADD_CAT', cat});
   })
     .catch( () => dispatch(catsHasErrored(true)));
@@ -79,7 +78,7 @@ export function addLike(id, values) {
     })
     .then(response => response.json())
     .then(cat => {
-      dispatch({type: 'ADD_LIKE', cat});
+      dispatch({type: 'ADD_LIKE', id});
     })
     .catch( () => dispatch(catsHasErrored(true)));
   }

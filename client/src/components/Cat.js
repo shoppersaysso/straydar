@@ -6,7 +6,7 @@ import { addLike } from '../actions/catActions'
 
 class Cat extends Component {
 
-  handleOnLike = event => {
+  handleOnLike = () => {
     this.props.addLike(this.props.cat.id, this.props.cat.likes + 1)
   }
 
