@@ -34,6 +34,11 @@ export function cats(state = [], action) {
         action.cat
       ];
 
+    case 'ADD_LIKE':
+      return [
+        action.cat
+      ];
+
     default:
       return state;
   }

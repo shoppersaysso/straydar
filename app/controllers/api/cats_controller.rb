@@ -1,5 +1,4 @@
 class API::CatsController < ApiController
-  before_action :set_cat, only: [:show, :update, :destroy]
 
   def index
     cats = Cat.all
@@ -8,6 +7,7 @@ class API::CatsController < ApiController
   end
 
   def show
+    cat = Cat.find(params[:id])
     render json: cat, status: 200
   end
 
@@ -22,15 +22,12 @@ class API::CatsController < ApiController
   end
 
   def update
+    cat = Cat.find(params[:id])
     if cat.update(cat_params)
-      render json: cat
+      render json: cat, status: 200
     else
       render json: cat.errors, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    cat.destroy
   end
 
   private
@@ -39,6 +36,6 @@ class API::CatsController < ApiController
     end
 
     def cat_params
-      params.require(:cat).permit(:color, :age, :details, :photo, :address)
+      params.require(:cat).permit(:color, :age, :details, :photo, :address, :likes)
     end
 end

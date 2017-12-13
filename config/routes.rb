@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
 
   namespace :api do
-    resources :cats
-    resources :locations
+    resources :cats, only: [:index, :create, :show, :update]
   end
 
   # get 'embed_json' => 'application#options', :via => [:options]

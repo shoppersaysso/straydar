@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171120163354) do
+ActiveRecord::Schema.define(version: 20171213001211) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20171120163354) do
     t.datetime "photo_updated_at"
     t.float "latitude"
     t.float "longitude"
+    t.integer "likes", default: 0
   end
 
 end

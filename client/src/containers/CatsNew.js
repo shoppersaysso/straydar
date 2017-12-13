@@ -118,7 +118,7 @@ class CatsNew extends Component {
                 Cancel
               </button>
             </form>
-            <img className="preview-image" src={this.state.photoUrl} alt=""/>
+            <img className="preview-image" src={this.state.photo} alt=""/>
           </Grid.Column>
           <Grid.Column width={4}>
           </Grid.Column>

@@ -48,7 +48,7 @@ export function catsFetch(url) {
 
 export function addCat(values) {
     return (dispatch) => {
-      dispatch({type: 'CREATE_NEW_CAT'});
+      //dispatch({type: 'CREATE_NEW_CAT'});
       return fetch(`/api/cats`, {
         method: 'POST',
         body: JSON.stringify({cat: values}),
@@ -62,6 +62,25 @@ export function addCat(values) {
       console.log(cat)
       dispatch({type: 'ADD_CAT', cat});
   })
+    .catch( () => dispatch(catsHasErrored(true)));
+  }
+}
+
+export function addLike(id, values) {
+  console.log(id, values);
+  return (dispatch) => {
+    return fetch(`/api/cats/${id}.json`, {
+      method: 'PUT',
+      headers: {
+       'Accept': 'application/json',
+       'Content-Type': 'application/json'
+     },
+      body: JSON.stringify({cat: {likes: values}}),
+    })
+    .then(response => response.json())
+    .then(cat => {
+      dispatch({type: 'ADD_LIKE', cat});
+    })
     .catch( () => dispatch(catsHasErrored(true)));
   }
 }

@@ -1,35 +1,30 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { addLike } from '../actions/catActions'
 
 class Cat extends Component {
-  constructor() {
-    super();
-    this.state = {
-      likes: 0,
-    };
-  }
 
-  //property initializer
-  handleOnLike = () => {
-    console.log(this)
-    this.setState({likes: this.state.likes + 1})
+  handleOnLike = event => {
+    this.props.addLike(this.props.cat.id, this.props.cat.likes + 1)
   }
 
   callApi = () => {
     console.log('a')
     fetch('/api/cats')
     .then(response => {
-      console.log('b')
+      console.log('c')
       return response.json()})
     .then(cats => {
-        console.log('c', cats)
+        console.log('d', cats)
     })
-    console.log('d')
+    console.log('b')
   }
 
   render(){
     const cat = this.props.cat;
+    console.log(this.props)
     return (
       <div key={cat.id}>
         <Grid>
@@ -48,11 +43,7 @@ class Cat extends Component {
           <p><button
             onClick={this.handleOnLike}>
             Like
-          </button>{this.state.likes}</p>
-          <p><button
-            onClick={this.callApi}>
-              Call Api
-          </button></p>
+          </button>{cat.likes}</p>
           </Grid.Column>
           <Grid.Column width={4}>
             <h2>Area Last Spotted:</h2>
@@ -70,4 +61,4 @@ class Cat extends Component {
   }
 }
 
-export default Cat;
+export default connect(null, { addLike })(Cat);
