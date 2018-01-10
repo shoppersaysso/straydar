@@ -30,7 +30,7 @@ export function catsPostNewSuccess(cat) {
 
 export function catsFetch(url) {
   return (dispatch) => {
-    return fetch('/api/cats', {
+    return fetch(`https://straydar-api.herokuapp.com/api/cats`, {
       method: 'GET',
       headers: {
        'Accept': 'application/json',
@@ -49,7 +49,7 @@ export function catsFetch(url) {
 export function addCat(values) {
     return (dispatch) => {
       //dispatch({type: 'CREATE_NEW_CAT'});
-      return fetch(`/api/cats`, {
+      return fetch(`https://straydar-api.herokuapp.com/api/cats`, {
         method: 'POST',
         body: JSON.stringify({cat: values}),
         headers: {

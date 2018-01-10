@@ -35,14 +35,22 @@ export function cats(state = [], action) {
       ];
 
     case 'ADD_LIKE':
-      let index = state.findIndex(cat => cat.id === action.id);
-      let cat = state[index];
+      //let index = state.findIndex(cat => cat.id === action.id);
+      //let cat = state[index];
 
-      return [
-        ...state.slice(0, index),
-        Object.assign({}, cat, { likes: cat.likes += 1 }),
-        ...state.slice(index + 1)
-      ];
+      // return [
+      //   ...state.slice(0, index),
+      //   Object.assign({}, cat, { likes: cat.likes += 1 }),
+      //   ...state.slice(index + 1)
+      // ];
+
+      return state.map(cat => {
+        if (cat.id === action.id){
+          return Object.assign({}, cat, { likes: cat.likes + 1})
+        } else {
+          return cat
+        }
+      })
 
 
     default:
